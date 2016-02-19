@@ -7,4 +7,4 @@ var ProductSchema = new Schema({
   cost: String
 });
 
-module.exports = mongoose.model('SomeThing', ProductSchema);
+module.exports = mongoose.model('Product', ProductSchema);

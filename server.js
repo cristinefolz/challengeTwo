@@ -18,20 +18,24 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 9090;
 
-app.get('/', function(req, res){
-
+app.get('/products', function(req, res){
+	Product.find(function(err, data){
+		if(err){
+			console.log(err);
+		} else {
+			res.render('index', { products: data });
+		}
+	})
   //Need to do Product.find to get all products,
   //and then render the index page
   //For inspiration, look at the GET route in routers/products
-
-  res.render('index')
 });
 
 
-app.use('/api', somethingRouter);
+app.use('/api', productRouter);
 
 app.listen(port, function(){
-  console.log('app listening on ')
+  console.log('app listening on '+ port)
 });

@@ -24,7 +24,9 @@ router.route('/products')
 
     var product = new Product();
 
-    //Finish the post route to properly create a new product..
+    product.name = req.body.name;
+    product.inStock = req.body.inStock;
+    product.cost = req.body.cost;
 
     product.save(function(err, product){
       if(err){
@@ -36,4 +38,4 @@ router.route('/products')
   });
 
 
-module.exports = something;
+module.exports = router;
